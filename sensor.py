@@ -30,7 +30,7 @@ def generate(host, port, username, password, topic, sensors, interval_ms, verbos
             "value": val
         }
 
-        for key in ["lat", "lng", "unit", "type", "description"]:
+        for key in ["msg_id", "id", "data"]:
             value = sensor.get(key)
 
             if value is not None:
