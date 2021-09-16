@@ -132,3 +132,4 @@ dmypy.json
 
 /data/postgres
 /data/grafana
+/docker/data/postgres
