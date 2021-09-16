@@ -29,14 +29,14 @@ def main():
    # args = parse_args()
 
     global ts_connection
-    ts_connection = "postgres://postgres:14UMzQg7p@*!@44.197.13.126:5432/sensor_                                                                                                                data"
+    ts_connection = "postgres://postgres:postgres1234@192.168.15.7:5432/sensor_data"
     logger.debug(ts_connection)
 
     client = mqtt.Client()
     client.on_connect = on_connect
     client.on_message = on_message
 
-    client.connect("44.197.13.126", 1883, 60)
+    client.connect("localhost", 1883, 60)
 
     # Blocking call that processes network traffic, dispatches callbacks and
     # handles reconnecting.
@@ -51,7 +51,7 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    client.subscribe("MK114/+/device_to_app")
+    client.subscribe("#")
     msg = print(client.subscribe)
 
 # The callback for when a PUBLISH message is received from the server.
@@ -88,10 +88,10 @@ def publish_message_to_db(message):
 # Read in command-line parameters
 def parse_args():
     parser = argparse.ArgumentParser(description='Script arguments')
-    parser.add_argument('–msqt_topic', nargs= '?',  help='Mosquitto topic', default='MK114/+/device_to_app')
-    parser.add_argument('–msqt_host',  nargs= '?', help='Mosquitto host', default='44.197.13.126')
+    parser.add_argument('–msqt_topic', nargs= '?',  help='Mosquitto topic', default='#')
+    parser.add_argument('–msqt_host',  nargs= '?', help='Mosquitto host', default='localhost')
     parser.add_argument('–msqt_port', nargs= '?', help='Mosquitto port', type=int, default=1883)
-    parser.add_argument('–ts_host', nargs= '?', help='TimescaleDB host', default='44.197.13.126')
+    parser.add_argument('–ts_host', nargs= '?', help='TimescaleDB host', default='localhost')
     parser.add_argument('–ts_port', nargs= '?', help='TimescaleDB port', type=int, default=5432)
     parser.add_argument('–ts_username', nargs= '?', help='TimescaleDB username',                                                                                                                 default='postgres')
     parser.add_argument('–ts_password', nargs= '?', help='TimescaleDB password',                                                                                                                 default='postgres1234')

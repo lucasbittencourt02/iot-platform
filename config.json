@@ -14,27 +14,27 @@
         "Sensor 1": {
             "msg_id": 1006,
             "id": "teste1",
-            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
+            "data": { "voltage": [1270], "current": [10], "power": 0}
         },
         "Sensor 2": {
             "msg_id": 1006,
             "id": "teste2",
-            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
+            "data": { "voltage": [1270], "current": [15], "power": 0}
         },
         "Sensor 3": {
             "msg_id": 1006,
             "id": "teste3",
-            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
+            "data": { "voltage": [1270], "current": [10], "power": 0}
         },
         "Sensor 4": {
             "msg_id": 1006,
             "id": "teste4",
-            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
+            "data": { "voltage": [1270], "current": [10], "power": 0}
         },
         "Sensor 5": {
             "msg_id": 1006,
             "id": "teste5",
-            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
-        },
+            "data": { "voltage": [1272], "current": [10], "power": 0}
+        }
     }
 }

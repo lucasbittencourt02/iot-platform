@@ -22,12 +22,12 @@ def generate(host, port, username, password, topic, sensors, interval_ms, verbos
     while True:
         sensor_id = random.choice(keys)
         sensor = sensors[sensor_id]
-        min_val, max_val = sensor.get("range", [0, 100])
+        min_val, max_val = sensor.get("voltage", [1270, 1276])
         val = random.randint(min_val, max_val)
 
         data = {
             "id": sensor_id,
-            "value": val
+            "data": val
         }
 
         for key in ["msg_id", "id", "data"]:
@@ -63,9 +63,9 @@ def main(config_path):
 
             host = mqtt_config.get("host", "localhost")
             port = mqtt_config.get("port", 1883)
-            username = mqtt_config.get("username")
-            password = mqtt_config.get("password")
-            topic = mqtt_config.get("topic", "mqttgen")
+            username = mqtt_config.get("")
+            password = mqtt_config.get("")
+            topic = mqtt_config.get("topic", "MK114/teste/device_to_app")
 
             generate(host, port, username, password, topic, sensors, interval_ms, verbose)
     except IOError as error:
