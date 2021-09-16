@@ -12,44 +12,29 @@
     },
     "sensors": {
         "Sensor 1": {
-            "lat": 10,
-            "lng": 10,
-            "unit": "C",
-            "type": "temperature",
-            "range": [0, 45],
-            "description": "Main Entrance"
+            "msg_id": 1006,
+            "id": "teste1",
+            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
         },
         "Sensor 2": {
-            "lat": 90,
-            "lng": 90,
-            "unit": "C",
-            "type": "temperature",
-            "range": [0, 45],
-            "description": "Kitchen"
+            "msg_id": 1006,
+            "id": "teste2",
+            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
         },
         "Sensor 3": {
-            "lat": 90,
-            "lng": 10,
-            "unit": "C",
-            "type": "temperature",
-            "range": [0, 45],
-            "description": "Deposit"
+            "msg_id": 1006,
+            "id": "teste3",
+            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
         },
         "Sensor 4": {
-            "lat": 10,
-            "lng": 90,
-            "unit": "C",
-            "type": "temperature",
-            "range": [0, 45],
-            "description": "Assemlby Floor"
+            "msg_id": 1006,
+            "id": "teste4",
+            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
         },
         "Sensor 5": {
-            "lat": 50,
-            "lng": 50,
-            "unit": "C",
-            "type": "temperature",
-            "range": [0, 45],
-            "description": "Offices"
-        }
+            "msg_id": 1006,
+            "id": "teste5",
+            "data": { "voltage": [1270, 1276], "current": [10, 15], "power": 0}
+        },
     }
 }
