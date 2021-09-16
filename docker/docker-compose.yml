@@ -17,8 +17,11 @@ services:
       - ./data/postgres:/var/lib/postgresql/data
   grafana:
     image: grafana/grafana:7.1.5
+    user: "$UID:$GID"
     ports:
       - "3000:3000/tcp"
+    volumes:
+      - ./data/grafana:/var/lib/grafana
     networks:
       - docker_demo-iot-net
     deploy:
