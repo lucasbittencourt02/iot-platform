@@ -128,8 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#data
-
-/data/postgres
-/data/grafana
-/docker/data/postgres
+docker/data/postgres/
+docker/data/grafana/
+docker/data/postgres/
