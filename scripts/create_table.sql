@@ -9,8 +9,7 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 -- iot data table
 CREATE TABLE IF NOT EXISTS sensor_data
 (
-    time        timestamptz      NOT NULL,
-    device_id   text             NOT NULL,
+    id          text             NOT NULL,
     voltage     double PRECISION NOT NULL,
     current     double PRECISION NOT NULL,
     power       double PRECISION NOT NULL
