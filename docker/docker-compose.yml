@@ -51,5 +51,9 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+  subscriber:
+    image: subscribe-mqtt:latest
+    networks:
+      - dockerr_demo-iot-net
 networks:
   docker_demo-iot-net:
