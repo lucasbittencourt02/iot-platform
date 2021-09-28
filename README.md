@@ -1,4 +1,4 @@
-#Plataforma IoT - Mosquitto + PostgreSQL + Grafana
+## Plataforma IoT - Mosquitto + PostgreSQL + Grafana
 
 Plataforma IoT capaz de receber dados de sensores MQTT.
 
