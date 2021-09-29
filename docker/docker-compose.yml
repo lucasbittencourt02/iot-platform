@@ -17,7 +17,7 @@ services:
       - ./data/postgres:/var/lib/postgresql/data
   grafana:
     image: grafana/grafana:7.1.5
-    user: "$UID:$GID"
+    user: grafana
     ports:
       - "3000:3000/tcp"
     volumes:
