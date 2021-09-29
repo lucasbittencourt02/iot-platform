@@ -5,7 +5,6 @@ Plataforma IoT capaz de receber dados de sensores MQTT.
 A plataforma inicialmente foi desenhada para coletar informações elétricas de um ponto de energia e publicar a leitura em uma Dashboard para monitoramento e acompanhamento de historico.
 
 
-
 ## Instalação Docker e Docker Compose
 ```
 sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common
@@ -18,13 +17,17 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
+## Clone Repositório
+
+git clone https://github.com/lucasbittencourt02/iot-platform.git
+
 ## Build Image Subscribe
 ```
-sudo docker build -t subscribe-mqtt
+sudo docker build ./docker/subscribe/ -t subscribe-mqtt:latest
 ```
 ## Setup de instalação
 ```
-sudo docker-compose up
+cd /docker/
+sudo docker-compose up -d
 ```
-
 
