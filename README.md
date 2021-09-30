@@ -5,29 +5,60 @@ Plataforma IoT capaz de receber dados de sensores MQTT.
 A plataforma inicialmente foi desenhada para coletar informações elétricas de um ponto de energia e publicar a leitura em uma Dashboard para monitoramento e acompanhamento de historico.
 
 
-## Instalação Docker e Docker Compose
-```
-sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt update
-sudo apt install docker-ce
-
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
 ## Clone Repositório
-
+```
 git clone https://github.com/lucasbittencourt02/iot-platform.git
+```
+## Instalação aplicação
 
-## Build Image Subscribe
+Acesse o local do arquivo clonado e execute os seguintes comandos:
+
 ```
-sudo docker build ./docker/subscribe/ -t subscribe-mqtt:latest
-```
-## Setup de instalação
-```
-cd /docker/
-sudo docker-compose up -d
+sudo chmod +x setup.sh
+sudo ./setup.sh
 ```
 
+## Criar tabela
+```
+CREATE DATABASE sensor_data;
+
+\c sensor_data
+
+CREATE TABLE IF NOT EXISTS sensor_data
+(
+    id          text             NOT NULL,
+    voltage     double PRECISION NOT NULL,
+    current     double PRECISION NOT NULL,
+    power       double PRECISION NOT NULL,
+    create_at   timestamptz      NOT NULL,
+    update_at   timestamptz      NOT NULL,
+    completed_at timestamptz     
+);
+
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON sensor_data
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+```
+
+## Criar View tabela
+```
+CREATE VIEW grandezas_eletricas_summary_minute WITH (timescaledb.continuous) AS
+SELECT id,
+       time_bucket(INTERVAL '1 minute', create_at) AS bucket,
+       AVG(voltage) AS avg_voltage,
+       AVG(current) AS avg_current,
+       AVG(power)   AS avg_power
+FROM sensor_data
+GROUP BY id,
+         bucket;
+```
+
+## Criar usuário de acesso Grafana
+```
+CREATE USER grafanareader WITH PASSWORD 'grafana1234';
+GRANT USAGE ON SCHEMA public TO grafanareader;
+GRANT SELECT ON public.sensor_data TO grafanareader;
+GRANT SELECT ON public.grandezas_eletricas_summary_minute TO grafanareader;
+```
