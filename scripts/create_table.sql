@@ -6,17 +6,23 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 \q
 
 
--- iot data table
+-- Criar Tabela sensor_data
 CREATE TABLE IF NOT EXISTS sensor_data
 (
     id          text             NOT NULL,
     voltage     double PRECISION NOT NULL,
     current     double PRECISION NOT NULL,
-    power       double PRECISION NOT NULL
+    power       double PRECISION NOT NULL,
+    create_at   timestamptz      NOT NULL,
+    update_at   timestamptz      NOT NULL,
+    completed_at timestamptz     
 );
 
-SELECT create_hypertable('sensor_data', 'time');
-
+-- criar trigger de timestamp postgreSQL
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON sensor_data
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
 
 --views
 -- voltage
