@@ -21,13 +21,13 @@ SELECT create_hypertable('sensor_data', 'time');
 --views
 -- voltage
 CREATE VIEW grandezas_eletricas_summary_minute WITH (timescaledb.continuous) AS
-SELECT device_id,
+SELECT id,
        time_bucket(INTERVAL '1 minute', time) AS bucket,
        AVG(voltage) AS avg_voltage,
        AVG(current) AS avg_current,
        AVG(power)   AS avg_power
 FROM sensor_data
-GROUP BY device_id,
+GROUP BY id,
          bucket;
 
 -- grafana user and grants
