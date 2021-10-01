@@ -2,6 +2,7 @@ version: "3.8"
 services:
   timescaledb:
     image: timescale/timescaledb:1.7.4-pg12
+    container_name: db-postgresql
     ports:
       - "5432:5432/tcp"
     networks:
