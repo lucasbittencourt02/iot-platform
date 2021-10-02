@@ -19,6 +19,14 @@ sudo ./setup.sh
 ```
 
 ## Criar tabela
+Para se criar a tabela, existem duas opções, ou se faz via PGAdmin ou executando o script no container.
+
+Para executar o script no container de banco de dados, siga os seguintes passos:
+
+```sudo docker exec -it db-postgresql psql -U postgres ```
+
+Criando a tabela de sensores:
+
 ```
 CREATE DATABASE sensor_data;
 
