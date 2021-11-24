@@ -18,7 +18,7 @@ services:
       - ./data/postgres:/var/lib/postgresql/data
   grafana:
     image: grafana/grafana:7.1.5
-    user: grafana
+    user: "UID$GID"
     ports:
       - "3000:3000/tcp"
     volumes:
@@ -30,7 +30,7 @@ services:
         condition: on-failure
     volumes:
       - ./data/grafana:/var/lib/grafana
-    user: grafana
+    user: "UID$GID"
   mosquitto:
     image: eclipse-mosquitto:1.6.12
     ports:
