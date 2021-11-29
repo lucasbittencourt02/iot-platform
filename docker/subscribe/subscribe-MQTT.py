@@ -97,13 +97,13 @@ def publish_message_to_db(message):
 def parse_args():
     parser = argparse.ArgumentParser(description='Script arguments')
     parser.add_argument('--msqt_topic', help='Mosquitto topic', default='#')
-    parser.add_argument('--msqt_host', help='Mosquitto host', default='44.197.13.126')
+    parser.add_argument('--msqt_host', help='Mosquitto host', default='IP_DO_MQTT')
     parser.add_argument('--msqt_port', help='Mosquitto port', type=int, default=1883)
-    parser.add_argument('--ts_host', help='TimescaleDB host', default='44.197.13.126')
+    parser.add_argument('--ts_host', help='TimescaleDB host', default='IP_DO_TIMESCALEDB')
     parser.add_argument('--ts_port', help='TimescaleDB port', type=int, default=5432)
-    parser.add_argument('--ts_username', help='TimescaleDB username', default='postgres')
-    parser.add_argument('--ts_password', help='TimescaleDB password', default='postgres1234')
-    parser.add_argument('--ts_database', help='TimescaleDB password', default='sensor_data')
+    parser.add_argument('--ts_username', help='TimescaleDB username', default='USUARIO_TIMESCALEDB')
+    parser.add_argument('--ts_password', help='TimescaleDB password', default='SENHA_TIMESCALEDB')
+    parser.add_argument('--ts_database', help='TimescaleDB password', default='DATABASE_TIMESCALEDB')
 
     return parser.parse_args()
 
